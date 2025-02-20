@@ -1,0 +1,36 @@
+[package]
+name = "rustix-libc-wrappers"
+version = "0.0.0"
+authors = ["Dan Gohman <dev@sunfishcode.online>"]
+description = "Safe Rust bindings to `libc` functions"
+documentation = "https://docs.rs/rustix-libc-wrappers"
+license = "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT"
+repository = "https://github.com/sunfishcode/rustix-libc-wrappers"
+edition = "2021"
+keywords = ["safe"]
+categories = ["os::unix-apis"]
+include = ["src", "Cargo.toml", "COPYRIGHT", "LICENSE*", "/*.md"]
+rust-version = "1.63"
+
+[dependencies]
+rustix = { version = "1.0.0", default-features = false }
+libc = { version = "0.2.114", default-features = false }
+
+[features]
+default = ["std"]
+std = ["rustix/std"]
+all-apis = ["io_uring", "process"]
+process = ["rustix/process"]
+io_uring = ["rustix/io_uring"]
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = [
+    'cfg(apple)',
+    'cfg(bsd)',
+    'cfg(freebsdlike)',
+    'cfg(linux_kernel)',
+    'cfg(linux_like)',
+    'cfg(netbsdlike)',
+    'cfg(solarish)',
+]
