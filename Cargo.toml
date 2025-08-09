@@ -9,7 +9,7 @@ repository = "https://github.com/sunfishcode/rustix-libc-wrappers"
 edition = "2021"
 keywords = ["safe"]
 categories = ["os::unix-apis"]
-include = ["src", "Cargo.toml", "COPYRIGHT", "LICENSE*", "/*.md"]
+include = ["src", "build.rs", "Cargo.toml", "COPYRIGHT", "LICENSE*", "/*.md"]
 rust-version = "1.63"
 
 [dependencies]
